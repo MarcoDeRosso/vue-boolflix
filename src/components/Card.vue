@@ -29,8 +29,10 @@ export default {
 @import "../style/colors.scss";
     .container-card{
         width: 100%;
+        max-height: 550px;
         img{
             width: 100%;
+            max-height: 550px;
         }
         &:hover .info-container{
             opacity: 1;
