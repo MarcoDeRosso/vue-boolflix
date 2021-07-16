@@ -2,7 +2,7 @@
     <main>
         <h1>ORIGINAL NETFLIX</h1>
         <div class="row">
-            <Card class="col" v-for="film in list" :key="film.id" 
+            <Card class="col-4 my-4" v-for="film in list" :key="film.id" 
             :original_title="film.original_title"
             :title="film.title"
             :original_language="film.original_language"

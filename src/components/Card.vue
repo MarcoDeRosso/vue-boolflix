@@ -19,7 +19,7 @@ export default {
         original_title:String,
         title:String,
         original_language:String,
-        vote_average:String,
+        vote_average:Number,
     },
 }
 </script>
