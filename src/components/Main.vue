@@ -2,7 +2,7 @@
     <main>
         <h1>ORIGINAL NETFLIX</h1>
         <div class="row">
-            <Card class="col" v-for="film in listTry.results" :key="film.id" 
+            <Card class="col" v-for="film in list" :key="film.id" 
             :original_title="film.original_title"
             :title="film.title"
             :original_language="film.original_language"
@@ -19,7 +19,7 @@ export default {
         Card
     },
     props:{
-        listTry:Object
+        list:Array
     }
 }
 </script>
