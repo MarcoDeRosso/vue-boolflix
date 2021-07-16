@@ -13,7 +13,7 @@
         </nav>
         <nav class="right-nav">
             <div class="input-group ">
-                <input type="text" class="form-control" placeholder="Search" v-model="searchString">
+                <input @keyup.enter="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
                 <button @click="$emit('search', searchString)" class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
             </div>
         </nav>

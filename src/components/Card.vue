@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-card position-relative">
-            <img src="https://image.tmdb.org/t/p/w342/hQq8xZe5uLjFzSBt4LanNP7SQjl.jpg" alt="">
+            <img :src="`http://image.tmdb.org/t/p/w500/${poster_path}`" alt="">
             <div class="info-container position-absolute bottom-0 start-50 translate-middle-x">
                 <h2>{{title}}</h2>
                 <h3>Titolo Originale: {{original_title}}</h3>
@@ -20,6 +20,7 @@ export default {
         title:String,
         original_language:String,
         vote_average:Number,
+        poster_path:String,
     },
 }
 </script>

@@ -6,7 +6,9 @@
             :original_title="film.original_title"
             :title="film.title"
             :original_language="film.original_language"
-            :vote_average="film.vote_average" />
+            :vote_average="film.vote_average" 
+            :poster_path="film.poster_path"
+            />
         </div>
     </main>
 </template>
