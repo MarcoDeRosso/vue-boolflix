@@ -2,7 +2,11 @@
     <main>
         <h1>ORIGINAL NETFLIX</h1>
         <div class="row">
-            <Card  v-for="film in listTry" :key="film.id" :poster_path="film.poster_path" class="col"/>
+            <Card class="col" v-for="film in listTry.results" :key="film.id" 
+            :original_title="film.original_title"
+            :title="film.title"
+            :original_language="film.original_language"
+            :vote_average="film.vote_average" />
         </div>
     </main>
 </template>
