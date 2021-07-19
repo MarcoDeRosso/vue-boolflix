@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-card position-relative">
-            <img :src="`http://image.tmdb.org/t/p/w500/${poster_path}`" alt="">
+            <img class="poster" :src="posterImg(poster_path)" alt="">
             <div class="info-container position-absolute bottom-0 start-50 translate-middle-x">
                 <h2>{{title}}</h2>
                 <h3>Titolo Originale: {{original_title}}</h3>
@@ -26,6 +26,12 @@ export default {
     methods:{
         flagImg(flag){
             return require ("../assets/"+flag+".png");
+        },
+        posterImg(img){
+            if(this.poster_path == null){
+                return require("../assets/netflix-1.jpg")
+            }
+            return "http://image.tmdb.org/t/p/w500/"+img;
         }
     }
 }
@@ -49,6 +55,10 @@ export default {
             text-align: center;
             background: rgba($color: #000000, $alpha: 0.6);
             opacity: 0;
+        }
+        .poster{
+            height: 500px;
+
         }
         .flag{
             width: 30px;
