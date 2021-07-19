@@ -37,10 +37,13 @@ export default {
     },
     methods:{
         flagImg(flag){
+            if(!this.original_language){
+                return require("../assets/white.png")
+            }
             return require ("../assets/"+flag+".png");
         },
         posterImg(img){
-            if(this.poster_path == null){
+            if(!this.poster_path){
                 return require("../assets/netflix-1.jpg")
             }
             return "http://image.tmdb.org/t/p/w500/"+img;
