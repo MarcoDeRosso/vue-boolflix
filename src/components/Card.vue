@@ -43,7 +43,7 @@ export default {
             return require ("../assets/"+flag+".png");
         },
         posterImg(img){
-            if(!this.poster_path){
+            if(this.poster_path == null){
                 return require("../assets/netflix-1.jpg")
             }
             return "http://image.tmdb.org/t/p/w500/"+img;
