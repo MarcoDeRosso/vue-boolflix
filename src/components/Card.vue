@@ -3,9 +3,9 @@
         <div class="container-card position-relative">
             <img class="poster" :src="posterImg(poster_path)" alt="">
             <div class="info-container d-flex flex-column align-items-center position-absolute bottom-0 start-50 translate-middle-x">
-                <h1>{{title}}</h1>
+                <h1>{{title}}{{name}}</h1>
                 <div class="line"></div>
-                <h3>Titolo Originale: {{original_title}}</h3>
+                <h3>Titolo Originale: {{original_title}}{{original_name}}</h3>
                 <h4>Lingua: <img class="flag" :src="flagImg(original_language)" alt="flag"></h4>
                 <h3 class="star" v-if="voteRounded == 0" >Voto: <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
                 <h3 class="star" v-if="voteRounded == 1" >Voto: <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
@@ -28,6 +28,8 @@ export default {
     },
     props:{
         original_title:String,
+        name:String,
+        original_name:String,
         title:String,
         original_language:String,
         vote_average:Number,

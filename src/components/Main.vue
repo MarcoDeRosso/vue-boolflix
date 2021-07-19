@@ -5,6 +5,8 @@
             <Card class="col-4 my-4" v-for="film in list" :key="film.id" 
             :original_title="film.original_title"
             :title="film.title"
+            :name="film.name"
+            :original_name="film.original_name"
             :original_language="film.original_language"
             :vote_average="film.vote_average" 
             :poster_path="film.poster_path"
