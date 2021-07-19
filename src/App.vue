@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
     <Header @search="searchFilm"/>
-    <Main  :list="filteredFilms"/>
+    <Main  :list="list"/>
   </div>
 </template>
 
@@ -21,48 +21,29 @@ export default {
     return{
       list:[],
       inputSearch: '',
-      api:'https://api.themoviedb.org/3/search/movie?api_key=f9f2d73c3435d93318563278430d4304&query=ritorno+al+futuro'
+      apiPopular:'https://api.themoviedb.org/3/movie/popular?api_key=f9f2d73c3435d93318563278430d4304'
     }
   },
   created(){
-    this.createApi(this.api)
+    this.createApi(this.apiPopular)
   },
-  computed: {
-    filteredFilms() {
-      // elements è una lista di elementi in cui deve cercare "search"
-      function searchIn(search, elements) {
-        let exists = false;
-        elements.forEach((element) => {
-          if(element.toLowerCase().includes(search.toLowerCase())) {
-            exists = true;
-          }
-        });
-        return exists;
-      }
-      if(this.inputSearch.length === 0) {
-        return this.list
-      } 
-      return this.list.filter((element) => {
-        return searchIn(this.inputSearch, [element.original_title, element.title,])
-      })
-    }
-  },
-   methods: {
+  methods: {
      createApi(api){
        axios.get(api).then((result)=>{
           this.list = result.data.results;
-          // this.searchFilm('')
        })
 
      },
       searchFilm(searchString) {
       this.inputSearch = searchString.trim()
       if(this.inputSearch.length === 0) {
-        return
+        this.createApi(this.apiPopular)
+        return;
       } 
-      let api='https://api.themoviedb.org/3/search/movie?api_key=f9f2d73c3435d93318563278430d4304&query='
-      api += this.inputSearch
-      this.createApi(api)
+      let api='https://api.themoviedb.org/3/search/multi?api_key=f9f2d73c3435d93318563278430d4304&query=';
+      api += this.inputSearch;
+      this.createApi(api);
+      
     }
   }
 }
