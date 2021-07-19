@@ -51,12 +51,15 @@ export default {
      createApi(api){
        axios.get(api).then((result)=>{
           this.list = result.data.results;
-          this.searchFilm('')
+          // this.searchFilm('')
        })
 
      },
       searchFilm(searchString) {
       this.inputSearch = searchString.trim()
+      if(this.inputSearch.length === 0) {
+        return
+      } 
       let api='https://api.themoviedb.org/3/search/movie?api_key=f9f2d73c3435d93318563278430d4304&query='
       api += this.inputSearch
       this.createApi(api)

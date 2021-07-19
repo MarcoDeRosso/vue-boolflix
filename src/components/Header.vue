@@ -9,6 +9,7 @@
                 <li><a href="#">Originali</a></li>
                 <li><a href="#">Aggiunti di recente</a></li>
                 <li><a href="#">La mia lista</a></li>
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
             </ul>
         </nav>
         <nav class="right-nav">
