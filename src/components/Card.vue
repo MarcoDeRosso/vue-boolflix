@@ -2,12 +2,17 @@
     <div>
         <div class="container-card position-relative">
             <img class="poster" :src="posterImg(poster_path)" alt="">
-            <div class="info-container position-absolute bottom-0 start-50 translate-middle-x">
-                <h2>{{title}}</h2>
+            <div class="info-container d-flex flex-column align-items-center position-absolute bottom-0 start-50 translate-middle-x">
+                <h1>{{title}}</h1>
+                <div class="line"></div>
                 <h3>Titolo Originale: {{original_title}}</h3>
-                <h4>Lingua: {{original_language}}</h4>
-                <img class="flag" :src="flagImg(original_language)" alt="flag">
-                <h3>Voto: {{vote_average}}</h3>
+                <h4>Lingua: <img class="flag" :src="flagImg(original_language)" alt="flag"></h4>
+                <h3 class="star" v-if="voteRounded == 0" >Voto: <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
+                <h3 class="star" v-if="voteRounded == 1" >Voto: <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
+                <h3 class="star" v-if="voteRounded == 2" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
+                <h3 class="star" v-if="voteRounded == 3" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
+                <h3 class="star" v-if="voteRounded == 4" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i></h3>
+                <h3 class="star" v-if="voteRounded == 5" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></h3>
             </div>
         </div>
     </div>
@@ -16,6 +21,11 @@
 <script>
 export default {
     name:'Card',
+    data() {
+        return {
+            voteRounded: Math.round(this.vote_average /2)
+        }
+    },
     props:{
         original_title:String,
         title:String,
@@ -32,7 +42,7 @@ export default {
                 return require("../assets/netflix-1.jpg")
             }
             return "http://image.tmdb.org/t/p/w500/"+img;
-        }
+        },
     }
 }
 </script>
@@ -46,6 +56,9 @@ export default {
             width: 100%;
             max-height: 500px;
         }
+        .poster{
+            height: 500px;
+        }
         &:hover .info-container{
             opacity: 1;
         }
@@ -55,13 +68,18 @@ export default {
             text-align: center;
             background: rgba($color: #000000, $alpha: 0.6);
             opacity: 0;
-        }
-        .poster{
-            height: 500px;
-
-        }
-        .flag{
-            width: 30px;
+            .line{
+                border: 1px solid $white-text;
+                width: 20%;
+            }
+            .flag{
+                width: 30px;
+            }
+            .star{
+                i{
+                    color: $gold;
+                }
+            }
         }
     }
 
