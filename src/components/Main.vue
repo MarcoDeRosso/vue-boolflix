@@ -53,7 +53,6 @@ export default {
         listPopolar:Array,
         listFilm:Array,
         listSerie:Array,
-        inputSearch:String,
     }
 }
 </script>

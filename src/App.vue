@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
     <Header @search="[searchFilm($event),searchSerie($event)]"/>
-    <Main :inputSearch="inputSearch" :listFilm="listFilm" :listSerie="listSerie"  :listPopolar="listPopolar"/>
+    <Main :listFilm="listFilm" :listSerie="listSerie"  :listPopolar="listPopolar"/>
   </div>
 </template>
 
