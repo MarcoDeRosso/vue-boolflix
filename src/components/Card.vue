@@ -6,13 +6,8 @@
                 <h1>{{title}}{{name}}</h1>
                 <div class="line"></div>
                 <h3>Titolo Originale: {{original_title}}{{original_name}}</h3>
-                <h4>Lingua: <img class="flag" :src="flagImg(original_language)" alt="flag"></h4>
-                <h3 class="star" v-if="voteRounded == 0" >Voto: <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
-                <h3 class="star" v-if="voteRounded == 1" >Voto: <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
-                <h3 class="star" v-if="voteRounded == 2" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
-                <h3 class="star" v-if="voteRounded == 3" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i> <i class="far fa-star"></i></h3>
-                <h3 class="star" v-if="voteRounded == 4" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="far fa-star"></i></h3>
-                <h3 class="star" v-if="voteRounded == 5" >Voto: <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i></h3>
+                <div>Lingua: <img class="flag" :src="flagImg(original_language)" alt="flag"></div>
+                <div class="star"><i v-for="n in 5" :key="n" class="fa-star m-2" :class="n <= voteRounded ? 'fas': 'far'"></i></div>
             </div>
         </div>
     </div>

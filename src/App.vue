@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="app">
-    <Header @search="searchFilm"/>
-    <Main  :list="list"/>
+    <Header @search="[searchFilm($event),searchSerie($event)]"/>
+    <Main :inputSearch="inputSearch" :listFilm="listFilm" :listSerie="listSerie"  :listPopolar="listPopolar"/>
   </div>
 </template>
 
@@ -19,32 +19,42 @@ export default {
   },
   data(){
     return{
-      list:[],
+      listPopolar:[],
+      listFilm:[],
+      listSerie:[],
       inputSearch: '',
       apiPopular:'https://api.themoviedb.org/3/movie/popular?api_key=f9f2d73c3435d93318563278430d4304'
     }
   },
   created(){
-    this.createApi(this.apiPopular)
+      axios.get(this.apiPopular).then((result)=>{
+        this.listPopolar = result.data.results;
+      })
   },
   methods: {
-     createApi(api){
-       axios.get(api).then((result)=>{
-          this.list = result.data.results;
-       })
-
-     },
-      searchFilm(searchString) {
+    searchFilm(searchString) {
       this.inputSearch = searchString.trim()
       if(this.inputSearch.length === 0) {
-        this.createApi(this.apiPopular)
-        return;
+        return this.listFilm = [];
       } 
-      let api='https://api.themoviedb.org/3/search/multi?api_key=f9f2d73c3435d93318563278430d4304&query=';
+      let api='https://api.themoviedb.org/3/search/movie?api_key=f9f2d73c3435d93318563278430d4304&query=';
       api += this.inputSearch;
-      this.createApi(api);
-      
-    }
+        axios.get(api).then((result)=>{
+          this.listFilm = result.data.results;
+        })
+    },
+    searchSerie(searchString) {
+      this.inputSearch = searchString.trim()
+      if(this.inputSearch.length === 0) {
+        return this.listSerie = [];
+      } 
+      let api='https://api.themoviedb.org/3/search/tv?api_key=f9f2d73c3435d93318563278430d4304&query=';
+      api += this.inputSearch;
+        axios.get(api).then((result)=>{
+          this.listSerie = result.data.results;
+        })
+    },
+    
   }
 }
 </script>
