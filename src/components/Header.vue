@@ -1,8 +1,8 @@
 <template>
-    <header class="d-flex justify-content-between align-items-center p-3">
-        <nav class="left-nav d-flex align-items-center">
-            <img src="../assets/logo.png" alt="logo">
-            <ul class="d-flex">
+    <header class="d-flex justify-content-between align-items-center py-3">
+        <nav class="left-nav">
+            <ul class="d-flex justify-content-between align-items-center">
+                <li><img src="../assets/logo.png" alt="logo"></li>
                 <li><a href="#">Home</a> </li>
                 <li><a href="#">Serie TV</a></li>
                 <li><a href="#">Film</a></li>
@@ -13,12 +13,14 @@
         </nav>
         <nav class="right-nav d-flex align-items-center">
             <div class="input-group ">
-                <input v-if="flag" @keyup="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
+                <input v-if="flag" @keyup.enter="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
                 <button @click="serchShow" class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
             </div>
-            <ul class="d-flex">
+            <ul class="d-flex align-items-center">
                 <li><a href="#">BAMBINI</a></li>
                 <li><a href="#"><i class="fas fa-bell"></i></a></li>
+                <li><img class="avatar" src="../assets/Netflix-avatar.png" alt="avatar"></li>
+                <li><a href="#"><i class="fas fa-sort-down"></i></a></li>
             </ul>
         </nav>
        
@@ -40,6 +42,7 @@ export default {
                 this.flag=true;
             } else{
                 this.flag=false;
+                this.searchString= "";
             }
         }
     }
@@ -54,7 +57,7 @@ header{
             width: 100px;
         }
         ul{
-            padding-top: 12px;
+            padding-left: 0;
             li{
                 margin: 0 12px
             }
@@ -67,9 +70,16 @@ header{
             }
         }
         ul{
+            padding-left: 0;
             padding-top: 12px;
             li{
                 margin: 0 12px
+            }
+            .avatar{
+                width: 30px;
+            }
+            li:last-child{
+                margin-left: 0;
             }
         }
     }

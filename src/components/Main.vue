@@ -3,7 +3,7 @@
         <h1>ORIGINAL NETFLIX</h1>
         <div v-if="listSerie.length === 0 && listFilm.length === 0" class="row">
             <h1>Popolar</h1>
-            <Card class="col-3 my-4" v-for="film in listPopolar" :key="film.id" 
+            <Card class="col-3 my-3" v-for="film in listPopolar" :key="film.id" 
             :original_title="film.original_title"
             :title="film.title"
             :name="film.name"
@@ -16,7 +16,7 @@
         <div v-else>
             <div  class="row">
                 <h1>TV Series</h1>
-                <Card class="col-3 my-4" v-for="film in listSerie" :key="film.id" 
+                <Card class="col-3 my-3" v-for="film in listSerie" :key="film.id" 
                 :original_title="film.original_title"
                 :title="film.title"
                 :name="film.name"
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <h1>Movie</h1>
-                <Card class="col-3 my-4" v-for="film in listFilm" :key="film.id" 
+                <Card class="col-3 my-3" v-for="film in listFilm" :key="film.id" 
                 :original_title="film.original_title"
                 :title="film.title"
                 :name="film.name"
