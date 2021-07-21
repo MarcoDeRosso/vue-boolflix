@@ -20,6 +20,7 @@
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "vue": "^2.6.11",
+    "vue-carousel": "^0.18.0",
     "vue-flag-icon": "^1.0.6"
   },
   "devDependencies": {

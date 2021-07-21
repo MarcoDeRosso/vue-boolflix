@@ -1,6 +1,7 @@
 <template>
   <div class="container" id="app">
     <Header @search="[searchFilm($event),searchSerie($event)]"/>
+    <Slider v-if="listSerie.length === 0 && listFilm.length === 0" :listPopolar="listPopolar"/>
     <Main :listFilm="listFilm" :listSerie="listSerie"  :listPopolar="listPopolar"/>
   </div>
 </template>
@@ -9,13 +10,17 @@
 import axios from 'axios';
 import Header from '@/components/Header.vue'
 import Main from '@/components/Main.vue'
+import Slider from '@/components/Slider.vue'
+import Vue from 'vue';
+import VueCarousel from 'vue-carousel';
 
-
+Vue.use(VueCarousel);
 export default {
   name: 'App',
   components: {
     Header,
-    Main
+    Main,
+    Slider
   },
   data(){
     return{
