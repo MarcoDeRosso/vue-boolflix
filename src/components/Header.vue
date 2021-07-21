@@ -13,7 +13,7 @@
         </nav>
         <nav class="right-nav d-flex align-items-center">
             <div class="input-group ">
-                <input v-if="flag" @keyup.enter="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
+                <input v-if="flag" @keyup.enter="$emit('search', searchString)" type="text" class="form-control" placeholder="Press Enter for Search" v-model="searchString">
                 <button @click="serchShow" class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
             </div>
             <ul class="d-flex align-items-center">
