@@ -13,8 +13,8 @@
         </nav>
         <nav class="right-nav d-flex align-items-center">
             <div class="input-group ">
-                <input @keyup.enter="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
-                <button @click="$emit('search', searchString)" class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+                <input v-if="flag" @keyup="$emit('search', searchString)" type="text" class="form-control" placeholder="Search" v-model="searchString">
+                <button @click="serchShow" class="btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
             </div>
             <ul class="d-flex">
                 <li><a href="#">BAMBINI</a></li>
@@ -30,11 +30,18 @@ export default {
     name:'Header',
         data() {
         return {
-            searchString: ''
+            searchString: '',
+            flag:false,
         }
     },
-        props:{
-
+    methods:{
+        serchShow(){
+            if (this.flag === false){
+                this.flag=true;
+            } else{
+                this.flag=false;
+            }
+        }
     }
 }
 </script>

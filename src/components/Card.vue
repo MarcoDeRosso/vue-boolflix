@@ -5,7 +5,8 @@
                 <h1>{{title}}{{name}}</h1>
                 <div class="line"></div>
                 <h3>Titolo Originale: {{original_title}}{{original_name}}</h3>
-                <div>Lingua: <img class="flag" :src="flagImg(original_language)" alt="flag"></div>
+                <div class="flag" v-if="original_language === 'en'">Lingua: <flag iso="us" /></div>
+                <div class="flag" v-else>Lingua: <flag :iso="original_language" /></div>
                 <div class="star"><i v-for="n in 5" :key="n" class="fa-star m-2" :class="n <= voteRounded ? 'fas': 'far'"></i></div>
             </div>
         </div>
@@ -30,12 +31,6 @@ export default {
         poster_path:String,
     },
     methods:{
-        flagImg(flag){
-            if(!this.original_language){
-                return require("../assets/white.png")
-            }
-            return require ("../assets/"+flag+".png");
-        },
         posterImg(img){
             if(this.poster_path == null){
                 return require("../assets/netflix-1.jpg")
@@ -67,7 +62,7 @@ export default {
                 width: 20%;
             }
             .flag{
-                width: 30px;
+                font-size: 16px;
             }
             .star{
                 i{
