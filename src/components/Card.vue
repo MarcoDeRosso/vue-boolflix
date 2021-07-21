@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div class="container-card position-relative">
-            <img class="poster" :src="posterImg(poster_path)" alt="">
+        <div class="container-card position-relative" :style="'background-image:url('+posterImg(poster_path)+')'">
             <div class="info-container d-flex flex-column align-items-center position-absolute bottom-0 start-50 translate-middle-x">
                 <h1>{{title}}{{name}}</h1>
                 <div class="line"></div>
@@ -51,14 +50,9 @@ export default {
 @import "../style/colors.scss";
     .container-card{
         width: 100%;
-        max-height: 500px;
-        img{
-            width: 100%;
-            max-height: 500px;
-        }
-        .poster{
-            height: 500px;
-        }
+        height: 500px;
+        background-size: cover;
+        background-position: center;
         &:hover .info-container{
             opacity: 1;
         }
