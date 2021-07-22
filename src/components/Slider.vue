@@ -31,6 +31,9 @@ export default {
     },
     methods:{
         posterImg(img){
+            if(img == null || !img){
+                return require("../assets/netflix-1.jpg")
+            }
             return "http://image.tmdb.org/t/p/w500/"+img;
         },
     }
