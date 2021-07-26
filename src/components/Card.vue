@@ -48,6 +48,7 @@ export default {
         height: 500px;
         background-size: cover;
         background-position: center;
+        cursor: pointer;
         &:hover .info-container{
             opacity: 1;
         }
